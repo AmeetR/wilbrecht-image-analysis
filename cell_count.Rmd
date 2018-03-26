@@ -1,0 +1,18 @@
+---
+title: "brain-tissue-analysis"
+author: "Ameet Rahane"
+date: "3/7/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(wholebrain)
+```
+This is getting all of the iamges from a given folder and setting them in a variable. 
+```{r}
+folder<- 'data/'
+images <- get.images(folder)
+
+```
+
