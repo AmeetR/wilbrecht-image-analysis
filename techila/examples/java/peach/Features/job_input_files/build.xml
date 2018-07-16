@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<project name="job_input_files" default="all">
+
+  <target name="all" depends="build" />
+
+  <path id="compile.path">
+    <pathelement location="../../../../../lib/techila.jar" />
+  </path>
+
+  <target name="build">
+    <javac srcdir="."
+           includeantruntime="false"
+           classpathref="compile.path" />
+  </target>
+
+  <target name="run" depends="build">
+    <java classname="RunInputfiles"
+          classpath="${java.class.path}:."
+          classpathref="compile.path" />
+  </target>
+
+  <target name="clean">
+    <delete>
+      <fileset dir="." includes="*.class" />
+      <fileset dir="." includes="*.state" />
+    </delete>
+  </target>
+</project>

@@ -1,0 +1,46 @@
+# Copyright 2011-2013 Techila Technologies Ltd.
+# Create a session with the 'init' command.
+init
+
+# Create a Bundle using the 'createBundle' command. This Bundle will contain 
+# two files, which will be transferred to Worker that will participate in the
+# Project. 'copy' is set to true, meaning the files in the Bundle will be
+# copied to the same temporary directory as the executable program.
+
+createBundle bundlename={user}.example.bundle.v3 \
+exports={user}.example.bundle.v3 \
+copy=true \
+yes=true \
+datafile1 datafile2
+
+# Create a Project using peach. The parameters are explained below:
+# command: defines that 'test.sh' will be executed on Linux Workers and
+#          'test.bat' on Windows Workers.
+# parameters: defines that first input argument is an element of the 
+#             peachvector element ('5' for Job #1, 'John' for for Job #2)
+# platform:  defines that only Workers with a Linux or Windows can be assigned
+#             Jobs
+# imports: imports the bundle, which was created earlier with the 'createBundle'
+#          command
+# outputfiles: defines that the file 'output_1' will be returned from the Worker
+# peachvector: defines that the Project should be split into two Jobs. 
+#              elements are '5' and 'John'
+# separator: defines that the peachvector elements are comma (,) separated
+#
+# The files 'datafile1' and 'datafile2' will stored in the Data Bundle which
+# will be transferred to the server. The files will transferred to each Worker
+# by importing the previously created Bundle. 
+# The result files will be placed in a directory called 'output', which 
+# is the default destination directory. Backslashes have been used to divide 
+# the peach command to multiple lines.
+
+peach command="test.sh;osname=Linux,test.bat;osname=Windows" \
+parameters="%P(peachparam)" \
+platform="Windows;Linux" \
+imports={user}.example.bundle.v3 \
+outputfiles="output;file=output_1" \
+peachvector="5,John" \
+separator=","
+
+# Remove the session after the Project has been completed
+unload

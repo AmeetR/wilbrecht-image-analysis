@@ -1,0 +1,28 @@
+# Copyright 2011-2013 Techila Technologies Ltd.
+# Create a session with the 'init' command.
+init
+
+# The createBundle command will create the Job Input Bundle, which will contain
+# four files. The {user} notation will be replaced by the 'alias' defined in
+# the  techila_settings.ini file. This Bundle will be exported to the
+# computational Project by using the value defined in the 'exports' parameter
+# in the 'imports' parameter.
+
+createBundle bundlename={user}.example.jobinput.bundle \
+  exports={user}.example.jobinput.bundle yes=true datafile1 \
+  datafile2 datafile3 datafile4
+
+# Create a Project using peach. 'test.sh' will be executed on Linux Workers and
+# 'test.bat' on Windows Workers.  Job #1 will retrive the file called 'datafile1',
+# Job #2 will retrieve the file called 'datafile2' etc. 'outputfiles' defines
+# that the file 'techila_result' will be transferred back from the Workers.
+# 'platform' defines that only Linux and Windows will be used in the Project.
+
+peach command="test.sh;osname=Linux,test.bat;osname=Windows" \
+  parameters="%B({user}.example.jobinput.bundle;file=datafile%P(jobidx);destination=data.txt)" \
+  platform="Linux;Windows" \
+  outputfiles="output;file=techila_result" \
+  peachvector="1 2 3 4"
+
+# Remove the session after the Project has been completed
+unload

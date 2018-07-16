@@ -1,0 +1,26 @@
+# Copyright 2011-2016 Techila Technologies Ltd.
+
+# Create a Project using peach. The parameters are explained below:
+# command: defines that 'test.sh' will be executed on Linux Workers and
+#          'test.bat' on Windows Workers.
+# platform:   defines that only Workers with a Linux or Windows can be assigned
+#             Jobs
+# parameters: defines that first input argument is the value of multip variable
+#            (2) and second input argument will be replaced by a peachvector 
+#             element (2 for Job #1, 4 for for Job #2 etc)
+# projectparameters: sets the value of the 'multip' variable to '2'
+# outputfiles: defines that the file 'output_1' and the stdout stream will be 
+#              returned from the the Worker
+# peachvector: defines that the Project should be split into five Jobs. 
+#              Peachvector elements are 2,4,6,8 and 10.
+#
+# The result files will be placed in a directory called 'output', which 
+# is the default destination directory. Backslashes have been used to divide 
+# the peach command to multiple lines.
+
+peach command="test.sh;osname=Linux,test.bat;osname=Windows" \
+platform="Windows;Linux" \
+parameters="%P(multip) %P(peachparam)" \
+projectparameters="multip=2" \
+outputfiles="output;file=output_1,stdout;stdout=true" \
+peachvector="2 4 6 8 10"

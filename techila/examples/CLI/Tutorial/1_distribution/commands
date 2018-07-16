@@ -1,0 +1,19 @@
+# Copyright 2011-2016 Techila Technologies Ltd.
+
+# Create a Project using peach. The parameters are explained below:
+# command: defines that 'test.sh' will be executed on Linux Workers and
+#          'test.bat' on Windows Workers.
+# platform:  defines that only Workers with a Linux or Windows can be assigned
+#             Jobs
+# outputfiles: defines that the file 'output_1' will be returned from the Worker
+# peachvector: defines that the Project should be split into five Jobs. 
+#              Peachvector elements are 1,2,3,4 and 5.
+#
+# The result files will be placed in a directory called 'output', which 
+# is the default destination directory. Backslashes have been used to divide 
+# the peach command to multiple lines.
+
+peach command="test.sh;osname=Linux,test.bat;osname=Windows" \
+platform="Windows;Linux" \
+outputfiles="output;file=output_1" \
+peachvector="1 2 3 4 5"

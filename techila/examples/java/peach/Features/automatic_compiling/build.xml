@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<project name="automatic_compiling" default="all">
+
+  <target name="all" depends="build" />
+
+  <path id="compile.path">
+    <pathelement location="./../../../../../lib/techila.jar" />
+    <pathelement location="${java.home}/../lib/tools.jar" />
+  </path>
+
+  <target name="build">
+    <javac srcdir="."
+           excludes="DistributionDist.java"
+           includeantruntime="false"
+           classpathref="compile.path" />
+  </target>
+
+  <target name="run" depends="build">
+    <java classname="RunDistribution"
+          classpath="${java.class.path}:."
+          classpathref="compile.path" />
+  </target>
+
+  <target name="clean">
+    <delete>
+      <fileset dir="." includes="*.class" />
+      <fileset dir="." includes="*.state" />
+    </delete>
+  </target>
+</project>

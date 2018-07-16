@@ -1,0 +1,5 @@
+Name Height Age
+John 180 34
+Lucy 163 18
+Tom	175	44
+Jen 158 22

@@ -1,0 +1,222 @@
+End-User License Agreement
+Techila SDK 2017-06-17
+
+This End-User License Agreement (hereinafter referred to as the
+"Agreement"). is a legal agreement by and between (i) You (either an
+individual or a single entity) and (ii) Techila Technologies (Business
+ID/VAT Number FI2009537-7), a Finnish company incorporated and
+existing under the laws of Finland having its principal place of
+business at Itsenäisyydenkatu 2, FI33100 Tampere, Finland (hereinafter
+referred to as "Techila") for Techila SDK Software, which includes
+computer software and may include associated media, printed materials
+and/or "online" or electronic documentation (hereinafter together
+referred to as the "Techila SDK"). Techila and You are being
+hereinafter referred also collectively as the "Parties" and
+individually as the "Party" as the context may require.
+
+By installing, copying, and/or otherwise using all or any portion of
+the Techila SDK You accept all terms and conditions of this Agreement.
+
+1. GRANT OF LICENSE
+
+The Techila SDK is protected by intellectual property laws and
+treaties. The Techila SDK is licensed, not sold, to You by Techila. As
+long as You comply with all terms and conditions of this Agreement,
+Techila grants You a personal, non-exclusive and non-transferable
+license to install and use the Techila SDK solely for Your own
+internal use. You shall have the right to make necessary amount of
+copies of the Techila SDK. The copies have to contain all the same
+legends and copyright notices as the original Techila SDK. The copies
+of the Techila SDK will be also under the same conditions and
+restrictions as the original Techila SDK.
+
+The Techila SDK may in addition to other software, content,
+documentation and/or materials also include (i) Sample Code and (ii)
+Library Code. The "Sample Code" shall mean the application source and
+object code files contained within the Techila SDK "examples"
+directory. The "Library Code" shall mean the application source and
+object code files contained within the Techila SDK's "lib" directory,
+excluding 3rd party libraries. The 3rd party libraries are listed in
+"README.txt" file in Techila SDK file folder.
+
+The following additional terms and conditions shall apply to the
+Sample Code and Library Code, which are fixed part of Techila SDK and
+included in the Techila SDK and definition of the "Techila SDK":
+
+You shall have the right to modify and create derivative works from
+the Sample Code. You shall own any derivative works created by You
+using the Sample Code, provided, however, that You shall use the
+Techila SDK in accordance with the terms and conditions of this
+Agreement. You may give rights to third parties for Your own
+derivative works, but You may not give any rights to the Techila SDK
+(including, but not limited to, the Sample Code) and provided,
+however, that all copyright notices and trademarks and other legends
+of Techila are used properly and Your own derivative work includes the
+following statement: "This software contains source code provided by
+Techila Technologies Ltd and for which Techila owns any and all
+intellectual property rights and which is subject for license terms
+and conditions provided by Techila. All rights are restricted."
+
+You shall have the right to link Library Code in Your own derivative
+works provided, however, that You shall use the Techila SDK in
+accordance with the terms and conditions of this Agreement. You shall
+have the right to distribute and give rights to your own derivative
+works linking the Library Code, not including the Library Code, but
+You may not give any right to the Techila SDK (including, but not
+limited to, the Library Code).
+
+Restrictions. Except as expressly provided in this Agreement, You
+shall have no right (i) use the Techila SDK in any manner to provide
+service bureau, time sharing or other comparable computer services or
+hosting services to any third party, (ii) assign, sublicense,
+distribute, rent, lease, loan, lend and/or otherwise transfer the
+license, or any part thereof, to the Techila SDK (including, but not
+limited to, the Sample Code and Library Code) to any third party,
+(iii) make changes and/or other amendments to the Techila SDK, and/or
+(iv) reverse engineer, disassemble or decompile expressly permitted by
+the applicable mandatory rules of applicable law.
+
+2. SUPPORT SERVICES
+
+Techila may, at its own discretion, provide You with support services
+related to the Techila SDK ("Support Services"). Any supplemental
+software code, such as, but not limited to, new revisions, new
+versions, updates, corrections patches and other amendments, additions
+and changes, provided to You as part of Support Services shall be
+considered part of the Techila SDK and subject to the terms and
+conditions of this Agreement, unless otherwise decided by Techila at
+its own discretion. The Support Services may be obtained only under a
+separate support agreement, unless otherwise decided by Techila as its
+sole discretion.
+
+3. INTELLECTUAL PROPERTY RIGHTS
+
+All copyrights, trademarks and all other intellectual property rights,
+interest and title in and to the Techila SDK and related
+documentation, including, but not limited to, possible new revisions,
+new versions, updates, correction patches and other amendments,
+additions, and/or changes shall at all times belong exclusively to
+Techila and/or its licensors.
+
+Except as expressly stated in this Agreement, this Agreement does not
+grant You any intellectual property rights in the Techila SDK and all
+rights not expressly granted in this Agreement are reserved by
+Techila.
+
+4. TERM AND TERMINATION
+
+The Agreement is effective until terminated. The license granted by
+this Agreement will terminate automatically without or with notice
+(whichever occurs first) with immediate effect, if You fail to comply
+with any term and condition of this Agreement.
+
+Upon termination of the license granted by this Agreement or use of
+the Techila SDK (whichever occurs first), You shall cease all use of
+the Techila SDK and destroy all copies, full or partial of the Techila
+SDK.
+
+5. DISCLAIMER OF WARRANTY
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, TECHILA AND/OR ANY
+OF ITS SUPPLIERS/LISENSORS PROVIDE THE TECHILA SDK ON "AS IS" BASIS
+AND WITH ALL FAULTS AND HEREBY DISCLAIM ALL OTHER WARRANTIES AND
+CONDITIONS, EITHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT
+LIMITED TO, ANY (IF ANY) IMPLIED WARRANTIES, DUTIES OR CONDITIONS OF
+MERCHANTABILITY, OF FITNESS FOR A PARTICULAR PURPOSE, OF ACCURACY OR
+COMPLETENESS OF RESPONSES, OF RESULTS, OF WORKMANLIKE EFFORT, OF LACK
+OF VIRUSES, AND OF LACK OF NEGLIGENCE, ALL WITH REGARD TO THIS
+AGREEMENT AND/OR THE TECHILA SDK, AND THE PROVISION OF AND/OR FAILURE
+TO PROVIDE SUPPORT SERVICES.
+
+6. LIMITATION OF LIABILITY
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL
+TECHILA AND/OR ANY OF ITS SUPPLIERS/LISENSORS BE LIABLE FOR ANY
+SPECIAL, INCIDENTAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR EXPENSES
+WHATSOEVER (INCLUDING, WITHOUT LIMITATION, LOSS OF PROFITS AND LOST OF
+SAVINGS, OR FOR THE LOSS OF, DAMAGE TO, OR ALTERATION OF DATA OR DATA
+FILES DUE TO ANY CAUSE AND THE RESULTING DAMAGES AND EXPENSES
+INCURRED, SUCH AS EXPENSES BASED ON THE RE-CREATION OF DATA FILES)
+ARISING OUT OF THE USE OF OR INABILITY TO USE THE TECHILA SDK OR THE
+PROVISION OF OR FAILURE TO PROVIDE SUPPORT SERVICES OR OTHERWISE
+ARISING FROM THIS AGREEMENT, EVEN IF TECHILA AND/OR ANY OF ITS
+SUPPLIERS/LISENSORS HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
+DAMAGES.
+
+THE ENTIRE LIABILITY OF TECHILA AND/OR ANY OF ITS SUPPLIERS/LICENSORS
+UNDER ANY PROVISION OF THIS AGREEMENT AND YOUR EXCLUSIVE REMEDY SHALL
+BE LIMITED TO THE GREATER AMOUNT ACTUALLY PAID BY YOU TO TECHILA FOR
+THE TECHILA SDK. THE LIMITATIONS, EXCLUSIONS, AND DISCLAIMERS STATED
+IN THIS AGREEMENT WILL APPLY TO THE MAXIMUM EXTENT PERMITTED BY
+APPLICABLE LAW, EVEN IF ANY ABOVE STATED REMEDY FAILS OF ITS ESSENTIAL
+PURPOSE.
+
+All claims based on this Agreement shall be presented to Techila in
+writing not later than three (3) months after You became aware of the
+grounds for its claim. You shall initiate court proceedings not later
+than six (6) months from the date of presenting the above-mentioned
+claim.
+
+7. MISCELLANEOUS
+
+Entire Agreement. This Agreement constitutes the entire agreement
+between Techila and You respect to the subject matter hereof and
+supersedes all prior proposals and agreements, both written and oral,
+and all other written and oral understandings, representations and
+communications between the Parties. HOWEVER, YOU MAY HAVE ANOTHER
+WRITTEN AGREEMENT DIRECTLY WITH TECHILA THAT SUPPLEMENTS OR SUPERSEDES
+ALL OR PORTIONS OF THIS AGREEMENT.
+
+Assignment. You may not assign or transfer the rights or obligations
+created through this Agreement without the prior written consent of
+Techila.
+
+Third Party Beneficiaries. None of the provisions of this Agreement is
+intended by the Parties, nor shall they be deemed, to confer any
+benefit on any person not a contracting Party to this Agreement.
+
+Third Party Software, databases and data. If the Techila SDK contains
+third party software, databases and/or data, Your use of any such
+third party software, databases and/or data will also be governed by
+any additional terms and conditions.
+
+Severability. Each paragraph and provision of this Agreement is
+severable, and if one or more paragraphs or provisions are declared
+invalid or unenforceable, the remaining provisions of this Agreement
+will remain in full force and effect.
+
+Waiver. Any failure or delay by either Party in exercising any right
+or remedy will not constitute a waiver. No waiver of any term or
+condition of this Agreement or of any right or remedy arising in
+connection therewith shall constitute a continuing waiver.
+
+Modifications. No modification of this Agreement will be valid unless
+in writing and signed by a duly authorised representative(s) of both
+Parties.
+
+Export Control. You may not use or provide the Techila SDK and/or
+related technical information to any person, firm, company or
+governmental entity when You know, or have reason to believe, that the
+supply might indirectly or directly lead to a contravention of the
+laws of regulations of Finland, the United States of America or the
+country of origin of the product applicable to the export, supply or
+use of goods or technology.
+
+Governing Law and Dispute Resolution. THIS AGREEMENT AND ALL MATTERS
+ARISING OUT OF THIS AGREEMENT SHALL BE CONSTRUED AND ENFORCED
+EXCLUSIVELY IN ACCORDANCE WITH THE LAWS OF FINLAND WITHOUT REGARD TO
+ITS CHOICE OF LAW PROVISIONS. THE UNITED NATIONS CONVENTION ON
+CONTRACTS FOR THE INTERNATIONAL SALE OF GOODS DONE AT VIENNA APRIL 11,
+1980 IS EXCLUDED. TECHILA MAY, BEFORE OR DURING ANY LEGAL PROCEEDINGS,
+APPLY TO A COURT HAVING JURISDICTION FOR A TEMPORARY RESTRAINING ORDER
+OR PRELIMINARY INJUNCTION WHERE SUCH RELIEF IS NECESSARY TO PROTECT
+ITS INTERESTS PENDING COMPLETION OF THE LEGAL PROCEEDINGS. ALL
+DISPUTES ARISING IN CONNECTION WITH OR OUT OF THIS AGREEMENT SHALL BE
+SETTLED IN THE DISTRICT COURT OF HELSINKI, FINLAND ("HELSINGIN
+KÄRÄJÄOIKEUS"). HOWEVER, WITH RESPECT TO A VIOLATION BY YOU OF THE
+PROVISIONS OF SECTIONS 1, 3 AND/OR PAYMENT OBLIGATIONS RELATING TO
+THIS AGREEMENT, TECHILA WILL HAVE THE RIGHT, AT ITS OWN DISCRETION, TO
+SEEK REMEDIES IN COURTS WITHIN ANY APPLICABLE TERRITORY. SOME
+JURISDICTIONS DO NOT ALLOW THE ARBITRATION PROCEEDINGS, SO THE
+ABOVE-MENTIONED ARBITRATION PROCEEDINGS MAY NOT IN THAT CASE APPLY TO
+YOU.

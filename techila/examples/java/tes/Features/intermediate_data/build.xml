@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<project name="1_distribution" default="all">
+
+  <target name="all" depends="build" />
+
+  <path id="compile.path">
+    <pathelement location="${user.home}/techila/lib/techila.jar" />
+    <pathelement location="${user.home}/techila/lib/techilaworkerutils.jar" />
+  </path>
+
+  <target name="build">
+    <javac srcdir="."
+           includeantruntime="false"
+           classpathref="compile.path" />
+  </target>
+
+  <target name="run" depends="build">
+    <java classname="RunIntermediate"
+          classpath="${java.class.path}:."
+          classpathref="compile.path" />
+  </target>
+
+  <target name="clean">
+    <delete>
+      <fileset dir="." includes="*.class" />
+      <fileset dir="." includes="*.state" />
+    </delete>
+  </target>
+</project>

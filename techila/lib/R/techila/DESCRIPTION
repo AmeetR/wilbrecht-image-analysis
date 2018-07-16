@@ -1,0 +1,13 @@
+Package: techila
+Type: Package
+Title: Techila
+Version: 3.6
+Date: 2017-11-01
+Author: Techila Technologies Ltd.
+Contact: Techila Support <support@techilatechnologies.com>
+Maintainer: Kari Koskinen <kari.koskinen@techilatechnologies.com>
+Description: Command Techila from GNU R
+License: proprietary
+LazyLoad: yes
+Depends: rJava, R.utils
+Imports: rJava, R.utils

@@ -1,0 +1,1600 @@
+2017-11-06
+
+Doc
+- EULA updated
+
+Common
+- new techila.jar
+  - added TechilaExecutorService, see:
+    http://www.techilatechnologies.com/help/techila-distributed-computing-engine/java-techila-distributed-computing-engine.html
+  - added signBundles CLI Command
+  - allowing hostname to be changed in Configuration object
+  - using "<none>" hostname to initialize Techila without server
+    connection to be used for local bundle creation etc.
+  - improved session initialization speed
+- new techilaworkerutils.jar
+  - Interconnect helper classes (TechilaConn and others) for Java
+  - TechilaExecutor = Worker core running TechilaExecutorService tasks
+  - includes ICTest class, fixes configureic admin-command
+
+C# (.NET)
+- ignoring errors in file logging to prevent issues to the computation
+- prevented TechilaThread from changing permissions of local directory
+
+MATLAB
+- workaround for "bad allocation" in localCompile.m, changing
+  MCCStandAlone=true->false if it occurs
+- improved loadIMData efficiency
+
+Python
+- fix 'out of memory' error on Windows when exiting program without
+  unload
+- setup.py checks Python major version, Python 3 code won't install on
+  Python 2 and vice versa
+- Added funclist parameter to support a list of function handles
+- Fix backslash substitution in file sources (affecting Windows usage)
+
+Examples
+- Added Java TechilaExecutorService usage examples
+- python: added asian option pricing example
+- python: changed function_handle example to use two function and
+  funclist parameter
+
+
+------------------------------------------------------------------------
+2017-06-28
+
+Common
+- new techila.jar
+  - fix issue with multiple keys in JKS
+  - introduced MemoryFile (and streams) to use memory as storage for
+    temporary files and logs
+  - added information about active worker cores to StatusWindow
+  - added warning about 0 active worker cores to StatusWindow
+  - added project errors to error window and to the logs as Severe
+  - introduced MemoryFile (and streams) to use memory as storage for
+    temporary files
+  - Peach:
+    - added methods for getting and setting parameter bundle name
+    - added method for setting parameter bundle version
+    - added methods for setting resource name for parameter and data bundles
+- new keytool.jar
+  - made keysize configurable, default 2048
+
+
+C# (.NET)
+  - added information about active worker cores to StatusWindow
+  - added warning about 0 active worker cores to StatusWindow
+  - added project errors to error window and to the logs as Severe
+  - added GetWorkers(bool onlineOnly) to WorkerManager
+    (previously only .Workers without params)
+
+MATLAB
+- fixed issue of missing JVM in R2016b compilations
+- moved message about "long first project" under Tips
+- added {'Tips', false} option to Peach
+- fixed index parameter of cloudfor to be replaced in every loop when
+  used in callbacks
+- added more debug messages to techilaSendRequest (interconnect) with
+  TECHILA_DEBUG=1
+- added support for interconnection subgroups
+- support for serialized input and output in peachclient
+- support for deploying Matlab code as service
+- fixed missing group=[] in cloudbc when group is not defined
+- fixed sendIMData for large data values
+- fixed loadIMData busy loop
+- improved datafile handling in peach()
+- added intermediate data example
+
+Python
+- fix send_im_data not connecting properly
+- support sending intermediate data to jobs
+- performance improvements for result processing (when steps is used)
+- added intermediate data example
+
+R
+- performance improvements for result processing (when steps is used)
+
+Doc
+- Docs are now online
+- restructured directory layout
+
+Examples
+- Added advanced FSI example codes for MATLAB and R
+
+------------------------------------------------------------------------
+2017-04-10
+
+Doc
+- Updated EULA
+
+------------------------------------------------------------------------
+2017-02-09
+
+MATLAB
+- fix: don't include inputdata into compilations with R2016b
+
+------------------------------------------------------------------------
+2016-12-02
+
+Common
+- new techila.jar
+  - more Admin CLI commands, listing and removing bundles, listing
+    worker nodes and their notes
+  - updated CLI help texts
+- new bundlecreator.jar
+  - Removed processor type selection, amd64 is the only one supported
+  - Removed Mac OS X support
+  - fix info/help field collapsing problem
+
+MATLAB
+- cloudend: fixed "runLocally" to work properly without "stepsperjob"
+- peach: added parameter BundleDescription
+- peach: added parameter UseBundle for using previously created
+  executor bundle
+- cloudfor: ignoring Techila specific workspace variables from input
+  parameters
+- techilaSendRequest: changed return value to varargout to support
+  multiple different output values, fixed char array to be read until
+  required amount of bytes is fetched
+- added new methods: downloadFromURL, uploadToURL, getUserData,
+  setUserData, storeUserFile, restoreUserFile, removeUserFile
+- getDependencies: added dependency check for the new methods
+- fixed cloudfor range handling in some cases
+- fixed runlocally to rehash when techila_for.m changes
+- getDepencencies: workaround for dependency issue caused by changes
+  in R2016b
+- cloudfor: added tips
+- cloudfor: fixed an indexing issue when running executables
+- cloudfor: added some informational status messages
+
+
+C# (.NET)
+- removed extra locking of uploads
+- fixed synchronization of uploads
+- added retries to initiateSession
+- fixed retrying of approve if bundle already exists
+- fixed issues in updating errors in status window
+- fixed issues in updating status window with multiple simultaneous
+  projects
+- fixed showing of all Project Ids in status window when running lot
+  of simultaneous projects
+- added default Server Expiration period=30d to new bundles
+- added Techila Manager id for better logging
+- added new methods: DownloadFromURL, UploadToURL, GetUserData,
+  SetUserData, StoreUserFile, RestoreUserFile, RemoveUserFile into
+  TechilaData class
+
+Python
+- fix jobinputfiles datadir
+- possibility to split peachvector into job input files
+
+------------------------------------------------------------------------
+2016-05-30
+
+Common
+- new techila.jar
+  - Fix a deadlock in GraphicalStatusWindow
+- techila_settings.ini: transfermode option is deprecated
+
+C# (.NET)
+- added some error catching
+- added retries for handling downloaded files to fix the issue with
+  files locked by external processes
+- fixed file uploads to be thread-safe
+- fixed an issue with multiple JKS files
+- synchronized keystore handling to make it thread-safe
+
+MATLAB
+- fixed support for MATLAB versions using three parts in version
+  numbering
+
+Python
+- Python 3 support synced with Python 2 version
+- Fixed examples to work with Python 3
+- pass error messages to TechilaException
+
+R
+- improved foreach and plyr support
+
+------------------------------------------------------------------------
+2016-03-21
+
+Common
+- new techila.jar
+  - CLI: added support for changing own password on both keystore and
+    GUI, requires server side support
+  - CLI and UserManager: added support for end-user quotas
+  - CLI: added support for list filters, setting field separators and
+    setting headers optional
+  - GraphicalStatusWindow changed to prevent hanging in CLI runs
+- new bundlecreator.jar
+  - Added "CLI" support
+- new keytool.jar
+  - minor fixes
+
+MATLAB
+- fixed findToolboxNames to work correctly in all OS environments
+- fixed getDependencies to add missing file suffixes
+- added support for stateful projects
+- forced to use .lastmod.mat file in the current folder
+- fixed environment values from worker OS appended in computations and
+  in remoteCompile
+- removed x86 from default platforms in remoteCompile
+- removed unrequired compilation files
+- improved waitCompletion watchdog to ask for project interruption
+- changed cloudfor examples to use %cloudfor:key=value format
+- cloudfor now supports %cf:, %cf(), %cloudfor:, %cloudfor(), %peach:
+  and %peach()
+- changed the way cloudfor handles index values
+- added support for callback interval (result count or seconds) in cloudfor
+- fixed support for using existing projectids in cloudfor
+- improved errors in cases where parameters cannot be loaded in worker
+  into original classes
+
+C# (.NET)
+- added support for controlling end-user quotas
+- fixed timeouts in uploading files
+- fixed statusbar visibility in some cases
+
+------------------------------------------------------------------------
+2015-12-04
+
+Common
+- new techila.jar
+  - Admin CLI: Allow comma separated list of worker groups when
+    assigning/unassigning and creating new user. Special "-" group
+    name can be used to assign nothing.
+  - added support for Handle callbacks in projectStatusChange,
+    resultsReceived and intermediateResultsReceived
+  - added support for status messages from computation
+  - added support for AD impersonation
+  - fixed result handling when project is already stopped
+  - implemented getUserInfo method
+  - option to activate XMLRPC debugging message with configuration
+    parameter xmlrpcdebug=true
+  - optimized polling for stdout, stderr and usermessages
+  - Admin CLI: added interconnect configure command (configureic)
+  - Admin CLI: added listpolicygroup and assignpolicygroup commands.
+  - CLI: fixed download
+  - GraphicalStatusWindow and log file will display the amount of days
+    remaining on the key before expiration.
+  - Some throttling in Poller on failure to prevent busy loops.
+  - added methods for setting and getting console log level
+  - added support for controlling semaphores
+  - added support for getting/setting project priority after project
+    is created
+  - added TechilaManager.getConfiguration()
+  - fixed some methods to support also project-specific jobids instead
+    of global jobids only
+- new bundlecreator.jar
+  - added Windows 2012 and 2012 R2
+- new keytool.jar
+
+MATLAB
+- added error messages for crcsum when file is missing or unable to
+  access
+- added option to use original filenames for jobinputfiles
+  with '<original>' or '<originalpath>'
+- added option to peachclient to prevent calling quit/exit in the end
+  with global TECHILACALLEXITINEND=false
+- cloudfor: added %cloudfor(key,value) to be used instead of %cf:
+  (still supported)
+- cloudfor: added options to run cloudfor locally ('runlocally', true)
+  and to revert to local execution ('allowrevert', true) if techila is
+  not available,
+- cloudfor: added %peach(key, value) to be used instead of %cf:peach
+- fixed forcing of UseJVM when interconnection is used
+- added support for running Matlab profiler in Techila Workers
+- fixed "Not a valid MATLAB file" issue
+- added MCR_CACHE_ROOT environment variable to use tmpdir
+- added retrying of intermediate file reading into cloudend as
+  workaround for locking issues
+- cloudfor: added 'TechilaProfile' variable into cloudfor callbacks if
+  Matlab profiler is used
+- added retries to loadIMData
+- fixed return value for sendIMData if operation fails
+- fixed cloudop result handling for targetted results
+- changed multithreading off by default (-R -singleCompThread)
+- fixed UseJVM to be turned automatically on for commTechila.* and
+  saveIMData.*
+- createJob: fixed error in variable name
+- localCompile, remoteCompile: added JVM dependency for semaphores
+- cloudfor: fixed using of binaries with parameters
+- added cloudfor interconnect examples
+- cloudbc: fixed return value for source job when source > 1
+- added support for parameter Semaphore
+- added methods techilaSemaphoreReserve and techilaSemaphoreRelease
+- added support for revert mode also when local code is compiled
+- fixed getDependencies depfun requirement in Matlab R2015b and later
+- fixed cloudfor to prevent codegeneration when attaching to an
+  existing projectid
+- fixed findToolboxNames for deprecated toolbox names
+- fixed file separator in Matlab's depfun replacement
+- Compilation warnings disabled
+- added methods to get/set project metadata
+- added methods to get the users active projects and jobs
+- fixed handling of #-prefixed dependencies (added with -a option to
+  compilation)
+
+Python
+- added resume functionality.
+- added support for semaphores
+- Fix iterator next when called after uninit.
+- added support for builtin functions given with funcname.
+- added support for generators as peachvector.
+- Support for interconnect targets other than 0 and 1.
+
+R
+- added project description field for cloudfor and peach.
+- Fix problems with evalWithTimeout in newer R.utils versions. gmkroot
+  removed from init.
+- renamed interconnect methods to techila.ic
+- added semaphore support
+- Fix null test in interconnect.
+- Support for interconnect targets other than 0 and 1.
+- Use base::save and base::load instead of save / load to avoid name
+  collisions.
+- prefix internal variable names with techila_ to avoid collisions.
+- cloudfor: Copy some variables in techila_for from parent frame to
+  running env.
+
+C# (.NET)
+- added support for AD impersonation
+- added support for Java properties user.name, user.home, user.dir,
+  file.separator, path.separator and line.separator
+- fixed synchronization issues in logging
+- fixed issue in loading Peach state
+- speed improvements in creating TechilaProject with lot of
+  TechilaThreads
+- added Count method to TechilaProject for getting the number of
+  assigned TechilaThreads
+- improved logging
+- added exception handling in intermediate data processing
+- fixed FindConfFile to use right path for SDK
+- added semaphore support
+- added ExecutionMode (Attached, Detached, Background) to
+  TechilaProject.Execute()
+- added Attach() methods to TechilaProject for binding back to
+  existing projects
+- changed TechilaManager to be automatically unloaded only if opened
+  internally in TechilaProject constructor
+- added WaitForOthers to TechilaConn
+- synchronized with Java implementation
+- fixed some methods to support also project-specific jobids instead
+  of global jobids only, added some missing comments
+- added support for stateful projects
+- added support for changing project parameters from jobs
+- added support for groups (interconnection subsets)
+- fixed BadReadException issue in handling result zips
+- fixed deleting of temporary files and folders
+- autoremoving project when TechilaProject completes
+- expirationperiod for JobInputBundles in TechilaProject
+- allowed AssemblyNames in AddDependencies()
+
+Examples
+- added interconnect, semaphore and active directory impersonation
+  examples for following programming languages
+ - MATLAB
+ - Python
+ - R
+ - C#
+
+Doc
+- Updated EULA
+- added walkthroughs for interconnect, semaphore and active directory
+  impersonation examples to following documents:
+ - Techila with MATLAB
+ - Techila with Python
+ - Techila with R
+ - Techila with C#
+- added Techila Interconnect document
+- added interconnect, semaphore and active directory impersonation
+  chapters to Techila Fundamentals document
+- updated document templates
+
+------------------------------------------------------------------------
+2015-02-04
+
+Common
+- new techila.jar
+  - Admin CLI improvements, new commands and fixes
+  - CLI: added upload bundles command
+  - intermediate result files support in Peach
+  - default polltime changed to 1000 ms
+- new keytool.jar
+  - minor enhancements and fixes
+
+MATLAB
+- added checking of dependencies for local compilation
+- added exit(99) to peachclient try-catch to make sure the Exceptions
+  will be handled as errors
+- cloudfor: added %cf:imcallback (Callbacks for Intermediate datas)
+- cloudfor: added '%cf:functiondep <csv>' for adding class methods
+  etc. to be included with %#function pragma
+- fixed issue with broken figure updates in R2014b
+- enabled update of Matlab GUI (figure handling etc.) during
+  computations
+- plugin support
+- hlp_serialize.m and hlp_deserialize.m - 3rd party components for
+  serializing and deserializing Matlab variables
+- Added interconnect support, requires core support.
+- fixed mcc to use dependencies also in non-standalone calls
+- added better support for finding all .m files recursively and added
+  support to .p files too
+
+Python
+- Renamed peach parameter return_generator to return_iterable because
+  it was not a generator that was returned
+- Added interconnect support, requires core support.
+- Added intermediate results support
+
+R
+- added foreach backend
+- added missing NAMESPACE file in Features/custom_library example
+- Added interconnect support, requires core support.
+
+C# (.NET)
+- Interconnect support, requires core support.
+- fixed plugin handling
+- added methods for adding dependencies into TechilaProjects
+- added handling of .config files in TechilaProjects
+- fixed listing the workers
+
+
+------------------------------------------------------------------------
+2014-08-20
+
+MATLAB
+- fixed techilainit to skip getPluginNames if it cannot be found in
+  techila.jar
+- getDependencies: support new Matlab methods for finding dependencies
+  if previous ones get obsolete
+- peach: support for getting default values for some parameters from
+ .ini
+- peach: support for wrapper method and wrapper parameters (for
+  wrapping the peachclient executable with some other binary)
+- peach: fixed some "file not found" issues in building the bundles,
+  fixed AllowPartial with StreamResults
+- cloudfor: support for "first=<vars>" to get the values from the
+  first iteration
+- cloudfor: support for "donotwait" to allow detached cloudfor
+  projects (projectid is saved into global TECHILA_PROJECTID)
+- cloudfor: add "TechilaJobId" to outputparams automatically
+- cloudfor: fixed %cf:sum to ignore value from local loop
+- fixed compilation for R2014a
+
+Python
+- changed sourcing from execfile() to exec('from x import *'),
+  when using snapshot helper functions "from peachclient import
+  load_snapshot, save_snapshot" line is required
+- added checking for cparams type to be string when searching for
+  special parameters
+- fixed separators in environment variables
+- check existence of bundle _before_ creating the bundle
+
+C# (.NET)
+- added new classes TechilaIntermediateData (store and deliver
+  Intermediate Data) and TechilaConn (preparing for interconnection)
+- added support for TechilaIntermediateData
+- new event IntermediateDataReceived
+- new constructor TechilaProject()
+- forcing execution to Windows/amd64
+- checking returncode from peach.Execute()
+- support for delivering new data to jobs
+- added support for TechilaIntermediateData
+- added GetJobId()
+- Updated CookComputing.XmlRpcV2.dll
+
+
+------------------------------------------------------------------------
+
+2014-04-25
+
+Common
+- new techila.jar:
+  - method for getting available plugins
+  - added admin workerlist command
+  - added support for conf.x.y options in configuration file
+  - minor fixes
+- new DLL/SO files
+  - new functions techila_printStatistics and
+    techila_getStatisticsString
+- new keytool.jar
+  - fixed problem with transaction autocommits
+
+MATLAB
+- reinitialize instead of warning if already initialized in
+  techilainit()
+- loading plugin classes with the new .jar import methods in
+  techilainit()
+- support for using cloudfor in Matlab classes
+- improved finding of dependencies for cloudfor parameters
+- support for 'mainfunction' in dependencies of cloudfor to include
+  anonymous functions etc.
+- added %cf:removeproject=<true|false> for configuring if the project
+  should be removed after completion (default is true)
+- improved parsing of function files having multiple functions without
+  end statement
+- fixed issue with paraminfo vs paraminfoglobals
+- improved data efficiency of some result variables
+- added support for handling zip files as result (if additional result
+  files are requested)
+- fixed summarizing of matrices with different sizes
+
+Python
+- added xfiles parameter for including files which are not sourced
+  (execfile) by peachclient, e.g. simple module files
+- added print_statistics function
+- experimental Python 3 support (as separate package in python3 dir),
+  some of the examples are not compatible
+
+Java
+- New examples
+
+C# (.NET)
+- Added with examples and documentation
+
+
+------------------------------------------------------------------------
+
+2013-11-20
+
+MATLAB
+- fixed problems with the Matlab R2013b changes in Java path modifying
+
+------------------------------------------------------------------------
+2013-11-15
+
+Common
+- new techila.jar:
+  - faster method for temporary file creation in BundleManager
+  - added support for http(s)://ip:port/ in hostname setting in the
+    techila_settings.ini file
+  - fixed stream breakage in Zip handling
+  - support using "createAndStartProject" for faster project starts
+    (requires server support)
+  - support for switching off security (SSL and jarsigning, requires
+    server and workers to be configured into non-secure mode too)
+  - changed handleZip to handle OOM errors (log severe error and
+    ignore error) when getting large filelist -> this may cause the
+    results to be in a wrong order
+- new keytool.jar: updated to use new postgresql.jar
+
+MATLAB
+- remote compile:
+  - fixed temporary folder issue causing mexfiles include to fail
+  - changed the location of compilation folder to <tmpdir>/<randomdir>
+  - fixed extra spaces in command line when UseJVM=true
+  - improved handling of compilation parameters to ignore extra
+    whitespace
+  - increased default timeout of remoteCompilation from 120s to 600s
+  - changed recognition string of exceeded Matlab license use to
+    handle more cases
+- remote and local compile: fixed issues with Matlab special folders
+  (@*, +*)
+- peach:
+  - added checking of empty compilations field in lastmod.mat to
+    force recompilation
+  - added 'Jobs' parameter to tell how many jobs to create
+    instead of giving 1..jobs in peachvector
+  - added 'ResultFile' parameter to handle downloaded resultfile
+    from previous run
+- cloudfor:
+  - renamed parameter stepsperworker to stepsperjob (also steps and
+    stepsperworker are ok)
+  - all global parameters starting with techila (case insensitive) are
+    removed from parameters sent to the worker
+  - job ranges are not pregenerated anymore (saves in time and in
+    traffic)
+  - peachvector is not generated any more. Instead 'Jobs' parameter of
+    peach is used
+  - added TechilaJobId, TechilaPeach, TechilaSnapshot and
+    TECHILAPARAMETERS globals to be visible in the local execution too
+  - execution time estimator improved to make sure the estimate is as
+    accurate as possible
+  - fixed recognition of file ending before last cloudend
+  - improved error displaying
+- allowed getDependencies to add cloudfor/cloudend into compilation to
+  support using cloudfor in broker
+
+Python
+
+- possibility to return a generator from peach with return_generator =
+  True, this is more memory efficient with large results, result files
+  are read only when processed.
+- Added documentation about peach parameters.
+
+Doc
+- Techila Command Line Interface: fixed text describing how multiple
+  job input files are handled
+- Getting Started: Added better instructions on where to find the
+  Techila SDK in the Techila Extranet
+- Techila with Matlab: Documented new parameter added to the example
+  '3_transferring_data_files'.
+
+Examples
+- CLI/Freatures/job_input_files_peach_param: fixed hard-coded value
+  with variable
+
+------------------------------------------------------------------------
+2013-08-09
+
+MATLAB
+- fixed searching for datafiles when they are not in current folder
+  but in Matlab path
+- changed BundleParameters and BinaryBundleParameters to support
+  overriding of hardcoded values
+- some finetuning to handling of Statistics parameter
+
+Doc
+- EULA added
+
+------------------------------------------------------------------------
+2013-07-05
+
+Common
+- new techila.jar:
+  - added support for defining directory for Peach state files
+  - added support for using a pre-downloaded result file with Peach
+  - support setting Java system properties from within
+    techila_settings.ini file, property.x=y will set property x to
+    value y
+  - added findconffile command into CLI for debugging.
+  - fixed problem with space characters in techila_settings.ini path
+- new Techila DLL/SO files
+  - prefixed every function with techila_
+  - possible to use old names by defining TECHILA_DEFINE_OLD_NAMES
+  - lots of unused function definitions removed
+  - support for defining Peach state files
+
+FORTRAN
+- added techila_ prefixes
+
+MATLAB
+- fixed storing result file when changing working directory
+- fixed getDependencies to handle case where directory and Matlab
+  function are sharing the same name
+- fixed a problem in hanging on looping dependencies in
+  getDependencies
+- added MCCPath parameter to peach to support additional search paths
+  for .m files in compilation
+- added concatenating of peach parameters (for example
+  ProjectParameter, BundleParameters, ...) if given multiple times in
+  command line
+- changed peach to write all mcc parameters into mccpath file to
+  prevent too long command lines
+- fixed cloudend to work with isdeployed
+- support for retrying compilation if the MCC license is reserved,
+  added parameters LicenseRetryDelay and LicenseRetries
+- added Warning to cloudend if the results are missing, hidden some
+  Warnings in getDependencies
+- added CRC of filenames to the total CRC of bundle (and to bundle
+  names)
+- fixed handling of INF/NaN values in results, support for result
+  variables used as input values (containing initial values)
+- getDependencies speed improvements
+- changed "DoNotCheckCRC" to check CRC and compile if .lastmod.mat
+  does not exist, otherwise it will skip these steps
+- changed compilation to ignore Matlab packages (folders beginning
+  with "+", they are not supported by mcc as input files)
+- cloudfor: Erroneous/stopped projects will now throw exception by
+  default (the previous functionality can be returned by adding
+  %cf:allowpartial=true)
+- cloudfor: changed the searching of the location of the source file
+  containing cloudfor to handle files which are not in Matlab's path
+- parseVersion: fixed support of remotecompilation for R2012b and
+  R2013a, fixed parsing of version of runtime libraries for the
+  compilations made with the latest Matlab versions
+- cloudfor: fixed peach parameters TimeLimit and ResultsRequired
+
+Perl
+- fixed storing result file when changing working directory
+
+Python
+- changed to use new techila_ prefixed functions in DLL/SO
+- fixed storing result file when changing working directory
+- added allowpartial parameter to peach
+- added resultfile parameter to peach for using a predownloaded result
+  file
+- fix unpickle error with multiple output files and detached project
+- experimental: possible to pass extra parameters to peachclient
+
+R
+- fixed storing result file when changing working directory
+- fixed error finding executable on Windows workers
+
+------------------------------------------------------------------------
+2013-02-07
+
+Common
+- new techila.jar:
+  - Try to open status window without stealing focus
+  - Fixed missing files in getResultFiles() when streaming is used
+  - Support UNC paths and some special characters in path definitions
+- new Techila DLL/SO files
+  - Plugin support
+  - jni.h added as an include in Techila.h, requires Java SDK include
+    dir when compiling
+
+R
+- peach .packages renamed to packages for consistency
+- Added example about using packages parameter
+- Fixed automatic version import
+- Added execute error handling
+
+Python
+- Fix sdkroot setting in setup.py (on Windows)
+- Added packages parameter in peach, automatically calls bundleit and
+  imports the resulting bundle.
+- Added example about using packages parameter
+- Added functions for advanced project handling
+- Added execute error handling
+- Prettier TechilaException, added __str__ method
+
+MATLAB
+- cloudfor: added support for %cf:finitesum=<variables> to support
+  fast summarizing of resulting matrix variables with constant size
+  and numerical (non-NaN) values, also changed the default handling of
+  results to detect this kind of variables and use faster summarizing
+- Fixed problem in result handling when the first result contains less
+  fields than some other result
+- Changed techilainit to improve techila_settings.ini search
+
+Perl
+- Added support for TECHILA_PERL_VERSION environment variable
+
+Doc
+- Added Python documentation
+- Added indexes into all documents
+
+
+------------------------------------------------------------------------
+2012-08-02 (prerelease)
+
+Common
+- new techila.jar:
+  - report, user and server management methods + CLI (requires server
+    support)
+  - added plugin support to CLI (--plugin <plugin jar or plugin name>)
+  - added support for plugin configurations
+    (plugin.<plugin name>.<key>=<value>)
+  - added support for registering plugins from configuration
+    (plugin.<plugin name>.location=<location of jar>)
+  - changed TechilaManagerPlugin interface to require parseCommand()
+    implementation to support CLI
+  - added support to plugins include resource file plugin.desc to tell
+    "class=<plugin class name>" and "name=<plugin name>" for
+    registering the plugin
+  - added MANIFEST_VERSION to generated Manifests
+- new Techila DLL/SO files
+  - Added functions unload2, getTempDir and getJavaSystemProperty
+  - fixed file counting in createSignedBundle3
+
+Python
+- Added Techila module (install with setup.py)
+  - includes rewritten peach using Java Peach via DLL/SO
+- Added examples
+
+R
+- changed bundleit to return bundle name if bundle already exists
+- added .packages= to peach and cloudfor to list package dependencies:
+  the packages and their dependencies will be bundled automatically
+  with bundleit and added to import list and to inputdata as
+  'libraries' variable
+- added peachclient to read 'libraries' from inputdata and execute
+  library(<x>) for each of them
+- added ignoreServerErrors=TRUE option to init() to allow partial
+  initialization (configuration is read and the libraries are
+  available, but the server is not connected)
+
+MATLAB
+- changed techila_client_os to techila_worker_os when supported
+- modified getDependencies to support directories in the
+  dependencylist
+- changed TEMP to use default value in the environment variables of
+  remoteCompile (R2011b + VS10 in 64bit Windows didn't work with the
+  changed value)
+
+------------------------------------------------------------------------
+2012-04-30
+
+Major rename changes. GMK has now been renamed to SDK.
+
+Common
+- new techila.jar (old name gridmgmt.jar):
+  - fi.techila.grid.management.oma.client Java package has been
+    renamed to fi.techila.user
+  - GridManagerFactory renamed to TechilaManagerFactory
+  - GridManager interface renamed to TechilaManager
+  - GridManagementException renamed to TechilaException
+  - GridManagerPlugin interface renamed to TechilaManagerPlugin
+- new bundlecreator.jar (gridbc.jar):
+  - More wizard like interface and more help text
+  - Changed to match renamed Java packages
+- new techilaconfig.jar (gridconfig.jar):
+  - Changed to match renamed Java packages
+- new Techila DLL/SO files
+  - renamed and changed to match the new Java package names
+  - GridManagement.h -> Techila.h
+  - GridManagement.dll -> Techila32.dll
+  - GridManagement64.dll -> Techila64.dll
+  - GridManagement.lib -> Techila32.lib
+  - GridManagement64.lib -> Techila64.lib
+  - libGridManagement.32bit.so -> libTechila32.so
+  - libGridManagement.64bit.so -> libTechila64.so
+  - libGridManagement.dylib -> libTechila.dylib
+
+MATLAB
+- Changed to use techila.jar and the new package names
+- gmkRoot parameter renamed to sdkRoot
+- gridfor renamed to cloudfor
+- gridinit and initgrid renamed to techilainit and inittechila
+- GRID_ prefixed globals renamed to TECHILA_ prefix
+
+R
+- Changed to use techila.jar and the new package names
+- gridfor renamed to cloudfor
+- gmkroot parameter renamed to sdkroot
+- steps parameter in peach allows to run multiple iterations in one
+  job.
+- Peach resulthandling changed.
+- Support for jobs parameter for specifying the number of jobs without
+  peachvector.
+- Nested loop support in cloudfor and many other improvements
+- unload renamed to uninit to avoid collisions
+- Support for password parameter
+- unload renamed to uninit
+- better searching for techila_settings.ini file
+- added cloudfor examples
+
+Perl
+- TechilaGrid.pm renamed to Techila.pm
+- Changed to use techila.jar and the new package names
+- gmkroot parameter renamed to sdkroot
+
+Python
+- Changed to use techila.jar and the new package names
+- Import Python runtime 2.7.2 version by default
+
+------------------------------------------------------------------------
+2012-01-20
+
+Common
+- new gridmgmt.jar:
+  - initFile(String) accepts null as a filename and if given will
+    search for the configuration file from multiple locations.
+  - Peach: Added setJavaExecutable() conveniency method for use with
+    Java classes. Added setUseDefaultOutputFile(boolean). Fixed
+    addDataFileWithDir, addParamFileWithDir and addJobFileWithDir to
+    work with absolute paths.
+  - Added streaming=true|false (default=true)
+  - Added support for using jobinputfiles+jobinputfilenames to tell
+    the number of jobs
+  - Fixed looping "project interrupt" question when interrupting
+    project which takes inputdata from stdin -> currently interrupt
+    question for these projects is skipped
+  - ProjectManager: added sendJobPostParameter for multiple jobids
+  - ResultManager: support for getting the names of the intermediate
+    result files on the server, only usable when running worker on the
+    same node with the server
+- new gridbc.jar: Interface changed to use tabs and added free fields.
+- new keytool.jar: Fixed file dialog handling bug on computers using
+  other locale than "en"
+
+MATLAB
+
+- Peach: fixed the databundle creation message to show correct number
+  of bundles when the files are not in cell array
+- gridfor: added support for running gridfor in .p and in compiled
+  code if the content of gridfor is precompiled
+
+R
+- Added experimental gridfor with one example
+
+
+------------------------------------------------------------------------
+2011-12-02 (prerelease)
+
+Common
+- new gridmgmt.jar:
+  - check that required Peach name is set
+  - check for duplicates in addImport
+  - fixed CLI-Peach to handle copy= and the external resources properly
+- new GridManagement libraries (DLL + SO)
+  - added support for JVM64PATH in GridManagement.conf
+  - added char** versions to peach methods needing varying number of
+    arguments
+  - fixed peach_getProjectId and peach_getProjectHandle
+
+Doc
+- Added Techila with C
+- Added Doxygen HTML for C API
+
+
+------------------------------------------------------------------------
+2011-11-21 (workshop)
+
+Common
+- new gridmgmt.jar
+  - PeachWrapper added
+  - some user and worker management methods and commands
+  - support for intermediate results
+  - support for sending "post parameters" to job
+  - support to prevent closing of statusbar before unload
+    (statuswindow.disposeonunloadonly=true)
+  - support for plugins
+  - CLI Peach: added support for parameters: jobs, jobinputfiles,
+    jobinputfilenames
+- new keytool.jar
+- new versions of GridManagement libraries (DLL + SO)
+  - peach_ functions = interface to Java Peach
+
+MATLAB
+- fixed checkStatusCode.m to handle special characters in error messages
+- allowed getDependencies.m to handle peach.m as dependency
+- added support for snapshotids (-entry:id) in loadSnapshot.m and
+  saveSnapshot.m
+- fixed parseVersion.m to handle new Matlab compiler log format
+- added LocalMode to peach.m
+- changed default temporary directory from "output" to "techila_tmp"
+- fixed mcc path for Linux and OS X local standalone compilations
+- added environment variables to support parfor
+- fixed peachclient.m RNG seeding to support large jobids
+- fixed remoteCompile to handle remote Linux compilations after failed
+  local compilation
+- added some new environment variables to remote compilations
+- decreased actionWait in waitCompletion.m to 1000ms
+- gridfor+gridend:
+  - added support for removing result files immediately after
+    importing them
+  - added support for returning the names of the result files without
+    importing the results
+  - added support for eval(<param>) in %gf: parameters
+  - changed the order of the generated lines to make the multilevel
+    gridfors to work better
+  - fixed %gf:outputparams
+
+R
+
+- Reshape result to the same shape as input peachvector
+
+Perl
+
+- Select name automatically in peach if funcname not defined
+- Fixed incorrect order ob job input files in peach (by removing sort)
+- Additional paramcopy parameter for peach to define whether parameter
+  bundle files should be copied to working dir (usable with binaries)
+- Peach with donotwait=1 returns handle or project id depending on
+  close bit
+- Added support for getFilesReceived / setFilesReceived
+
+------------------------------------------------------------------------
+2011-09-07
+
+Common
+
+- new gridmgmt.jar
+  - Fixed regression in init methods when not using grid_settings.ini
+    file (affected keytool).
+- new keytool.jar
+  - Use default server management port 25001
+- new versions of GridManagement libraries
+  - fixed init methods in native to handle access from multiple
+    threads
+
+MATLAB
+
+- getDependencies fixed to handle some error cases with dependency
+  files
+- added #filename to peach DependencyFiles for adding files into
+  compilation without compiling them
+- fixed peach compilation command to support whitespaces in file paths
+- fixed printStatistics to print some information even when no cputime
+  nor realtime is received from computation
+- added #filename (AdditionalFiles={}) support to remoteCompile
+- added experimental support for setting compiler as a feature for
+  Windows remotecompilations
+- gridfor: added support for %# parameters inside gridfor
+
+------------------------------------------------------------------------
+2011-09-01
+
+Common
+
+- Added gridconfig.jar, a tool to configure grid_settings.ini
+- new gridmgmt.jar:
+  - Alias now optional in grid_settins.ini if there is only one key in
+    the keystore
+  - Server hostname and port can be resolved using SRV record from DNS
+    (_tgsmgmt._tcp when hostname not defined in grid_settings.ini)
+  - Fixed CLI read when line is longer than 4096 bytes
+  - Improved macro handling, e.g. {X,Y,Z} the first valid value is used
+  - CLI automatically inits and unloads if necessary (won't save
+    session file)
+  - Fix NullPointerException in getResultFileCount when no results yet
+  - CLI-peach added support for peachvector="<stdin>" to read the
+    peachvector content from stdin
+  - fixed CLI-Peach to use "." as default directory in Destination parameter
+  - added support for Management.unzipFile(String file, String destdir,
+    String options) (options is currently not used)
+  - added JOB_WAITING, JOB_EXPIRED, JOB_WORKING, JOB_READY and JOB_CANCELLED to
+    ProjectManager interface
+  - added methods Vector=getProjectJobsByStatus(int handle, int status) into
+    ProjectManager to list project's jobids
+  - added Hashtable=getJobInfo(int handle, long jobid) into
+    ProjectManager to get information of job
+  - added sendJobCommand(int handle, long jobid, String command) into
+    ProjectManager for sending commands to job's stdin
+  - CLI Peach rewritten to use Java Peach and added new parameters for
+    Priority, Description and ProjectId
+  - added new methods to Java Peach: setPeachVector and setJobParams
+- new gridbc.jar:
+  - Added more fields in advanced section and improved guess
+  - Possible to create bundles without uploading
+  - added Windows Server 2008R2 to BundleCreator templates
+- new keytool.jar:
+  - print key info
+  - added extended usage "id_kp_clientAuth" to developer
+  - fixed ClassCastException in OS X caused by BasicFileChooserUI cast
+- new versions of GridManagement libraries, added
+    libGridManagement.dylib for Mac OS X, added .lib file for 64-bit
+    Windows
+  - added support for running GMK calls in multiple threads
+  - added new method unzipFile(LPSTR filename, LPSTR destdir,
+    LPSTR options)
+  - added extern "C" to GridManagement.h
+
+MATLAB
+
+- fixed LD_LIBRARY_PATH to support R2011a
+- added support to add "include" files into mex compilations (#filename)
+- fixed error in remotecompile when only local compilation is made
+- added support for remoteCompileMEX to give mexopts.bat and
+  mexopts.sh to use different compilers and support to give additional
+  compilation options (see doc remoteCompileMEX.)
+- added support for Matlab SP versions with three digits in version
+  number
+- MCCStandAlone now defaults to true
+- fixed a problem with missing dependencies in remote compilations
+- fixed a problem with RunAsM saving increasing list of compilations
+  into lastmod.mat
+- fixed a standalone MCC path issue in Linux and OSX
+- fixed extra whitespace (causing compilation errors) in compilations
+  with USEJVM=true
+- fixed JVM support in Linux workers
+- fixed Uninit=false when CloseHandle=false
+- fixed case when using 32bit and 64bit external binaries and only
+  32bit binary got defined to internalresources
+- added Windows 64bit to default platforms, removed Mac OS X 32bit
+  from default platforms
+- fixed invalid indexing of mex-files for local compilations in
+  remoteCompile
+- Support for giving GMKROOT as environment variable
+- gridfor:
+  - added support for replace=<csv> parameter
+  - fixed extra compilation caused by global parameter "OK"
+  - fixed cat=<csv> and sum=<csv> for single value variables
+  - fixed problem with disappearing TECHILA_FOR_HANDLE global parameter
+  - added parameter mfilename=<filename.m> to use different name for
+    generated code (default is techila_for.m)
+  - added support for TECHILA_FOR_RESULTFILE variable (containing name
+    of the current resultfile) in callbacks
+  - Documentation added
+
+R
+
+- peach "inputdata" file now "techila_peach_inputdata_<time>_<rnd>"
+  and automatically removed after use
+- Added Mac OS X support
+- Asian example changed
+- Peach returns NULL when there are no successful jobs instead of a
+  list of NULLs
+- Added experimental runAsR mode.
+- Added documentation file for peach (see ?peach).
+
+Perl
+
+- New Peach implementation (uses Java Peach), previous implementation
+  still available as "oldpeach" (= "nectarine" renamed to "peach",
+  "peach" renamed to "oldpeach")
+
+Java
+
+- Peach example supports also Mac OS X
+
+------------------------------------------------------------------------
+2011-03-10
+
+Common
+
+- Added the Bundle Creator tool (gridbc.jar), which provides a
+  graphical interface for creating Bundles
+- New Keytool.jar, fixed index.xml encoding (now always UTF-8)
+- New gridmgmt.jar, CLI: supports escaped newlines in read, -v prints
+  version
+
+MATLAB
+
+- Added 'gridfor' function
+
+Command Line Interface
+
+- Added Techila Command Line Interface document
+- Added examples on how to use the CLI interface
+
+Perl
+
+- Added support defining Perl runtime version used in import (when
+  using new peach = nectarine).
+
+------------------------------------------------------------------------
+2011-02-16
+
+Common
+
+- new gridmgmt.jar
+  - CLI createbundle command improved
+  - CLI peach improved and added to help
+- Added 64-bit Windows DLL
+
+R
+
+- A completely new peach implementation as an R package
+  - requires rJava ( install.packages("rJava") )
+  - install with R CMD INSTALL -l <target dir> gmk/grid/R/techila
+- Techila Grid with R doc
+- R examples
+
+- Old R impl:
+  - Added platform detection
+  - Added support for JavaPeach (GridPeach, GridPeachNextFile,
+    GridPeachDone)
+  - added ReturnResultFiles, OutputFiles and an option to give R
+    version into arguments
+  - added support for downloading results with projectid
+  - added support for using function handle instead of function name
+  - added support for creating and handling multiple datafile bundles
+    with support for CRC sums
+  - added support for Project and Bundle Parameters
+
+MATLAB
+
+- 64-bit OSX support in Peach and RemoteCompile
+- fixed downloading of results with projectid when lastmod.mat does
+  not exist
+- Fixed RemoteCompile to include printError.m into compilation
+- Fixed RunAsM to include printError.m into peachclient.zip
+- Fixed peachclient <param> -parsing
+- Fixed peach/RunAsM to resolve dependencies
+- Added support for functions with no return values to peachclient
+- Added global variable TechilaJobId to peachclient
+- GridInit: Added CLEANUP modes as global variables
+- Added cell-wrapper to peach parameters given as non-cell
+- Fixed importresult/importdata parameter name issue
+- Fixed Binary parameter for RemoteExecutables
+- Improved/fixed MEX remotecompilation, added support for Mac OS X
+
+
+Python
+
+- Peach added more errorhandling
+- added support for 64-bit Windows
+- added result streaming
+
+------------------------------------------------------------------------
+2010-11-05
+
+* grid:
+  - new gridmgmt.jar:
+    - Java Peach
+    - adjustable font size in GraphicalStatusWindow
+    - printStatistics method directly in Java
+    - fixed bundle (jar) creation with directories on Windows
+    - fixed bundle (jar) timestamping when timestamp fetch fails
+    - fixed downloading partial results in streaming mode.
+  - new keytool.jar: minor changes.
+  - Updated GridManagement.h and the DLL/SO files
+
+* doc: Added new docs.
+
+* Perl:
+  - nectarine (peach using Java Peach), will later replace current
+    peach.
+  - peachclient supports <jobidx> parameter.
+
+* Matlab:
+  - Improved loadSnapshot and saveSnapshot
+    - fixed growing snapshot file in append
+    - added parameter for snapshot file name (-file:<filename>)
+    - added debugging mode (-debug or global TechilaDebug=true)
+  - griduninit.m: a new method for unloading GRID
+  - remoteCompile.m: added support for remotecompiling non-Matlab
+    files
+  - peach:
+    - added RunAsM parameter to support running Matlab functions
+      without compiling
+    - added error if tried to use with DoNotInit as uninitialized
+    - fixed varargin indexing for external calls using varargin
+      (createbundle, remotecompile, etc.)
+    - added error message of missing databundle files
+    - added support for ReturnResultFiles when using callback
+    - skipping unloading if GRID variable is empty.
+    - Callback: added parameter '{resultfile}' to support delivering
+      resultfile name with Matlab parameters.
+    - Added <param> and <paramX> support for precompiled binaries
+    - added ImportResult parameter to support importing of non-Matlab
+      data.
+  - using cell mode in some larger .m files
+  - changed fileparts() calls to be compatible with future Matlab
+    releases
+  - removed unnecessary error printing
+  - New examples added and old ones reorganized
+
+* Java: added Peach example.
+
+------------------------------------------------------------------------
+2010-08-25
+
+* New gridmgmt.jar, fixed broken result transfer in non-streaming mode
+
+------------------------------------------------------------------------
+2010-08-24
+
+* Matlab:
+  - Methods for snapshot handling and remotecompiling.
+  - Peach changed to handle parameter 'files' as optional.
+  - Fixed issue when compiler toolbox is not installed.
+  - Fix crcsum for RemoteExecutable.
+  - Added support for additional .m dependencies (DependencyFiles).
+  - Fixed parameter list to support function handle dependencies in
+    structures and cells.
+  - Improved jobfiles functionality.
+
+* Perl: Fix use of job input files with peachclient.
+
+* Java examples: Changed to use createSignedBundle also for data
+  bundle.
+
+* grid:
+  - new keytool.jar
+  - new gridmgmt.jar
+
+------------------------------------------------------------------------
+2010-07-02 (b)
+
+* Matlab:
+  - fix callback call with result filename
+  - gmkRoot no longer needed with peach
+    (requires gmk/grid/Matlab directory to be in Matlab search path,
+    see pathtool, addpath and savepath)
+  - peach: support for RemoteExecutable (=executable preinstalled on worker)
+  - peach: improved JobInputFiles speed for multiple files per job
+  - added a new example: pi_peach
+
+* Perl:
+  - finish callback function
+  - removeProject and getProjectStatus functions
+  - by default peach removes project when done
+
+* Python:
+  - printStatistics method
+  - peach prints more statistics using printStatistics
+  - support for using function handle as peach's function
+
+------------------------------------------------------------------------
+2010-05-31
+
+* grid:
+  - new gridmgmt.jar: Retry failed server commands. Use with
+    unrealiable network connections, see grid_settins.ini.template.
+
+* Matlab peachclient:
+  - Default random number generator seeding with timestamp*jobidx
+
+* Perl:
+  - printStatistics method
+  - peach prints more statistics using printStatistics
+
+* R:
+  - PrintStatistics function
+  - peach prints more statistics using printStatistics
+
+------------------------------------------------------------------------
+2010-04-30
+
+* grid:
+  - new gridmgmt.jar: Fix creating and uploading large bundles.
+  - included missing GridManagement.h header file.
+
+* doc: Developer's Guide included.
+
+* Perl peach:
+  - Fix setting techila_client_os parameter when processor is also
+    defined, add missing comma.
+  - Support including named databundles
+
+------------------------------------------------------------------------
+2010-04-23
+
+* Matlab peach:
+  - fixed a problem in parameter handling
+
+* Perl peach:
+  - Use bundled perl also on Linux
+  - Support for additional bundled perl modules (imports => "...")
+  - Set PERL5LIB properly for included bundles
+
+------------------------------------------------------------------------
+2010-04-16
+
+* Matlab peach:
+  - Added support for multiplatform binaries
+  - added support for Mac OS X
+  - Fixed JobFileParameters with multiple parameters
+
+* Perl peach:
+  - Possibility to give password in peach and init
+  - Support for precompiled binaries (binaries => [...] & executable => 1)
+  - Support for additional databundles, created only when necessary
+  - Support job specific input files (jobinputfiles => {...}) with
+    precompiled binaries
+
+------------------------------------------------------------------------
+2010-04-06
+
+* Matlab peach: added support for library files, added support for
+  multiple '<param>' in peachclient parameters in format '<paramx>'
+  where x=1..
+
+* gridmgmt.jar: Faster creation of signed jars. Some minor fixes.
+
+* keytool.jar: Added better error diagnostics.
+
+------------------------------------------------------------------------
+2010-03-30
+
+* Matlab peach:
+  - Support to give functions in parameter list and include them
+    automatically in compilations
+  - Fixed looping in getDependencies
+  - Handle logical values for optional parameters
+  - Fixed: printStatistics gives wrong values
+  - fixed peach to handle multiple result values from callback method
+    properly
+
+* Python peach:
+  - Detect platform automatically
+  - Fixed cross-platform datafile reading
+
+* gridmgmt.jar:
+  - Command line (beta)
+    try: java -jar gridmgmt.jar help
+  - Fix timeouts when approving large bundles
+    (asynchronous approve, requires updated server version (>= 2010-03-20))
+
+------------------------------------------------------------------------
+2010-02-12
+
+* Example config now in grid_settings.ini.template .
+  When unpacking this won't override the old configuration.
+
+* New gridmgmt.jar: warn user 30 days before key expiration, confirm
+  stop project, signed bundle timestamping.
+
+* Updated C/C++ interfaces.
+
+* Matlab:
+  - Peach prints more statistics
+  - MEX-support
+  - initgrid is deprecated, use gridinit instead
+  - Better error messages
+  - Support job specific input files (JobInputFiles, JobInputFileNames)
+  - Support precompiled binaries (may be other than Matlab)
+    (Executable, MatlabRequired)
+  - Peach can return multiple values
+  - Peach option to return file names instead of results
+    (ReturnResultFiles)
+  - Fix losing global variable when calling javaaddpath (in init),
+    global <var> calls should be called after init.
+
+* Perl peach: possible to return files with results.
+
+------------------------------------------------------------------------
+2009-11-26
+
+* New features in Matlab peach.
+
+* New gridmgmt.jar
+
+------------------------------------------------------------------------
+2009-11-04
+
+* New Keytool.jar, Wizard GUI.
+
+------------------------------------------------------------------------
+2009-11-02
+
+* minor fix in createBundle.m, return status value
+
+------------------------------------------------------------------------
+2009-10-15
+
+* Some minor perl and documentation fixes.
+
+------------------------------------------------------------------------
+2009-10-14
+
+* Perl support, TechilaGrid.pm and some examples (peach).
+
+* Matlab peach changes: return multiple files, callback function
+  support, other usage improvements.
+
+* R: better Linux support.
+
+------------------------------------------------------------------------
+2009-09-02
+
+* new gridmgmt.jar
+  - storepassword feature
+
+* new keytool.jar
+  - passwd command, ability to change password in keystore
+  - password not echoed on screen when using Java 6
+
+* grid_settings.ini: macro definitions documented.
+
+* peach: support multiple return values
+
+* asian_peach_with_stream: return multiple value
+
+------------------------------------------------------------------------
+2009-08-21
+
+* peach.m: Windows 2003 and Windows Server 2008 support, compiler
+  toolbox only required if doing compilation (mcrversion() moved).
+
+* README.txt: command to start keytool GUI.
+
+------------------------------------------------------------------------
+2009-08-10
+
+* Added support for executing 32-bit Matlab compilations on
+  64-bit environments
+
+* Added new function "String getLastCreatedBundleName(int handle)"
+  to return the name of the last bundle created during the session
+
+* Added new C-function "int getLastCreatedBundleName(int handle,
+  LPSTR name, size_t* len)"
+
+* Added new optional parameter to peach.m: Handle=<handleid> to use
+  handle returned from earlier peach call. This can be used for
+  example to create multiple projects, leave them on background and
+  fetch their results later.
+
+* peach.m stores used times for the current project into global
+  variables peach_cputime and peach_realtime.
+
+* Added support for optional GridManagement.conf file to tell
+  the location of the Java's jvm.dll. This is only needed with
+  GridManagement.dll. The content of the file is in format:
+    JVMPATH=<path to the jvm.dll>
+
+* Fixed issues in 64-bit environment with GridManagement.dll
+  and finding Java in registry
+
+* New macros for modifying bundleprefix, bundlename, imports,
+  exports resources and executor in createBundle() and
+  createSignedBundle():
+    {random} = random number between 0 and 1000000
+    {timestamp} = current timestamp since epoch in ms
+  The following macros are not available for bundleprefix
+  and bundlename:
+    {bundlename} = the name of the created bundle
+    {bundleversion} = the version of the created bundle
+
+* Version numbers in Imports may now be specified with :x.y.z
+  (e.g. "mybundle:0.0.1") instead of longer
+  "mybundle;specification-version=0.0.1"
+
+* Grid_settings.ini supports new parameter "logdir" to tell the
+  directory where the logfiles are written. If used with "logfile",
+  then the logfile tells the basename of the files and logdir the
+  location. If logfile is not specified, "grid.log" is used.
+
+* Grid_settings.ini supports the following macros:
+  Values configured in the grid_settings.ini:
+    {keystore}, {alias}, {hostname}, {tempdir}, {errordir},
+    {errorfile}, {stdoutdir}, {stdoutfile}, {logdir},
+    {logfile}
+  Additionally:
+    {temp} - the default temp file path
+    {inidir} - the directory containing grid_settings.ini
+    {<environment key>} - Value from system environment (e.g. USERNAME)
+    {<property key>} - Value from Java system properties (e.g. user.home)
+
+------------------------------------------------------------------------
+2009-06-18
+
+* Fixes and compatibility for older Matlab versions.
+
+* Added compatibility for Linux Matlab versions (32 and 64-bit).
+
+------------------------------------------------------------------------
+2009-05-26
+
+First release with new name Techila Grid Management Kit.
+
+* Directories reorganized! Examples and toolbox -functions updated
+  to new directory structure.
+
+* New examples.
+
+------------------------------------------------------------------------
+2009-04-02
+
+* grid: new gridmgmt.jar: minor fixes,
+  + added some error fetching and printing to waitCompletion.m
+
+------------------------------------------------------------------------
+2009-04-01
+
+* grid: new gridmgmt.jar and GridManagement.dll
+  New graphical status window with progress bar
+  (enable from grid.settings)
+
+* asian_with_snapshot: added.
+
+------------------------------------------------------------------------
+2009-03-06
+
+* grid: new gridmgmt.jar fixes graphical password dialog.
+
+------------------------------------------------------------------------
+2009-03-04
+
+* grid: new gridmgmt.jar, GridManagement.dll and keytool.jar
+  + changes for Matlab: Linux-support, watchdog,
+  peach.m improved with error fetching.
+
+* included javadocs in doc/javadoc.
+
+* all asian examples: now possible to calculate non-square surfaces.
+
+* asian_with_parallel_each: splitting with M also.
+
+------------------------------------------------------------------------
+2008-12-17
+
+* grid: new gridmgmt.jar and keytool.jar
+
+* peach with -C for Matlab > R2008a (= build ctf)
+
+* added createJob.m and createProjectJobs.m
+
+------------------------------------------------------------------------
+2008-11-28
+
+* asian_with_parallel_each: added.
+
+* grid: added peach functions and waitAndRetrieveResults.
+
+* others: modified to use waitAndRetrieveResults.
+
+------------------------------------------------------------------------
+2008-11-13
+
+* grid.settings: added passworddialog
+
+* readme.txt: more text
+
+* grid: createSignedBundle.m updated,
+  new versions of keytool.jar and gridmgmt.jar
+
+* asian_with_databundle: added
+
+------------------------------------------------------------------------
+2008-09-26
+
+* released

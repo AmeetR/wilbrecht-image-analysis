@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<!--
+Run with: ant run
+
+Download with: ant -Dpid=1234 download
+-->
+
+<project name="detached_project" default="all">
+
+  <target name="all" depends="build" />
+
+  <path id="compile.path">
+    <pathelement location="../../../../../lib/techila.jar" />
+  </path>
+
+  <target name="build">
+    <javac srcdir="."
+           includeantruntime="false"
+           classpathref="compile.path" />
+  </target>
+
+  <target name="run" depends="build">
+    <java classname="RunDetached"
+          classpath="${java.class.path}:."
+          classpathref="compile.path" />
+  </target>
+
+  <target name="download" depends="build">
+    <java classname="DownloadResult"
+          classpath="${java.class.path}:."
+          classpathref="compile.path">
+      <arg value="${pid}" />
+    </java>
+  </target>
+
+  <target name="clean">
+    <delete>
+      <fileset dir="." includes="*.class" />
+      <fileset dir="." includes="*.state" />
+    </delete>
+  </target>
+</project>

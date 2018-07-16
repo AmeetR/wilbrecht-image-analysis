@@ -1,0 +1,173 @@
+TIP#1: Use "if isdeployed" in cloudfor block to prevent the local execution of the block.
+
+  It's not possible to skip the execution of any MATLAB lines without statements. This 
+  makes also the content of the cloudfor block executed once locally. To prevent the 
+  local execution, use "if isdeployed .. end" statement. For example:
+  
+  cloudfor x=1:1000
+    if isdeployed
+      <run this code only in Techila environment>
+    end
+  cloudend
+  
+  NOTE: cloudfor uses the local execution of the cloudfor block to estimate the optimal 
+  number of loops to include in a single computational job. With "if isdeployed" 
+  statement, the estimation is not used.
+  
+  Use "%cloudfor('stepsperjob',<steps>)" control parameter with "if isdeployed" to set 
+  manually the number of loops in a single computational job. 
+  See TIP#2 below for more details.
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+TIP#2: Use "%cloudfor('stepsperjob',<steps>)" to define the number of loops to be executed in a single computational job.
+
+  To make the computation optimal, cloudfor tries to make the single computational jobs 
+  to be long enough. Too short jobs cause overhead to the computation and the data transfers, 
+  which may cause the computation take much more time than with the longer jobs.
+  
+  If the execution of a single loop of cloudfor block is short, cloudfor tries to combine 
+  multiple loops to make the computational jobs longer. By default, the number of loops to 
+  combine is estimated by executing cloudfor block once locally and timing the execution. 
+  To read more about the estimation, see TIP#3 below.
+
+  The estimation can be used to automatically define the size of the computational jobs, but
+  for a faster operation, it's recommended to define the size manually.
+  
+  To set the number of loops in a single computational job, "%cloudfor('stepsperjob',<steps>)"
+  can be used. This is recommended to be done also if "if isdeployed" block is used for 
+  preventing the local execution. See TIP#1 above for details.
+  
+  If nested loops are used, the "%cloudfor('stepsperjob',<steps>)" control parameter can
+  be defined in each loop separately.
+  
+  For example:
+  
+  cloudfor x=1:1000
+    %cloudfor('stepsperjob',50)
+    cloudfor y=1:1000
+      %cloudfor('stepsperjob',100)
+      <your code here>
+    cloudend
+  cloudend
+  
+  This example would combine loop "y" into 10 parts and loop "x" into 20 parts. The 
+  number of computational jobs would be 200.
+  
+
+
+
+
+
+
+TIP#3: Use "%cloudfor('estimate',<seconds>)" to set the requested length of single computational jobs.
+
+  By default, cloudfor tries to optimize the length of the computational jobs by combining 
+  multiple short loops into a single computational job. The minimum length of a single 
+  computational job is 5 seconds by default.
+  
+  To tune the requested minimum length of a single computational job, "%cloudfor('estimate',<seconds>)" 
+  can be used.
+  
+  For example:
+  
+  cloudfor x=1:1000
+    %cloudfor('estimate',60)
+    <your code here>
+  cloudend
+  
+  This example would try to combine the loops to make a single computational job to take 
+  at least one minute (60 seconds).
+  
+  NOTE: The estimation is always done before the computation is created into Techila 
+  environment. If a single loop is already long, the estimation may take several amount 
+  of extra time. To prevent the estimation for the long loops, it's recommended to use 
+  "%cloudfor('stepsperjob',<steps>)" to define the steps in a single computational jobs 
+  manually. For long loops, it can be set to one (1). See TIP#2 above for more details. 
+  For long loops, it may also be useful to prevent local execution of the cloudfor block. 
+  See TIP#1 above for more details.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TIP#4: Tips can be disabled with "%cloudfor('tips',false)" control parameter
+
+  By default, cloudfor tries to give some tips about defining the control parameters. To
+  prevent the tips from appearing, you can add "%cloudfor('tips',false)" control parameter.
+
+  For example:
+
+  cloudfor x=1:1000
+    %cloudfor('tips',false)
+    <your code here>
+  cloudend
+
+  To prevent all Techila related informational messages, you can add "%cloudfor('quiet')"
+  control parameter.
+
+  For example:
+
+  cloudfor x=1:1000
+    %cloudfor('quiet')
+    <your code here>
+  cloudend
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TIP#5: Use "%cloudfor('inputparam', '<var1>,<var2>,...')" to define the delivered variables
+
+  By default, cloudfor delivers all the variables in the execution scope to the Techila
+  environment. If there are large variables, that are not needed in the code executed
+  in cloudfor, they cause overhead to the data transfers and the execution.
+
+  To define which variables are transferred to Techila environment, you can use
+  "%cloudfor('inputparam', '<variable>')" control parameter. Multiple variables can be 
+  defined comma separated in the value. It's also possible to use multiple 
+  "%cloudfor('inputparam', '<variable>')" lines in a single cloudfor block.
+
+  For example:
+
+  a=rand(5000,5000); % large variable, which is not used in cloudfor
+  b=mean(a); % smaller variable, which is used in cloudfor
+  c=rand(); % another small variable, which is used in cloudfor
+  cloudfor x=1:length(b)
+    %cloudfor('inputparam', 'b,c');
+    result(x)=c+b(x);
+  cloudend
+
+  In a similar way, the output variables to be returned from the computation can
+  be defined with "%cloudfor('outputparam', '<variable>')".
